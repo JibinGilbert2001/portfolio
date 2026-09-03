@@ -1615,6 +1615,30 @@
                 transition: none !important;
             }
         }
+    
+        /* Selected Work project images */
+        .project-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            background: #111;
+            min-height: 260px;
+        }
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            min-height: 260px;
+            display: block;
+            object-fit: cover;
+            transition: transform .5s ease;
+        }
+        .project:hover .project-image img {
+            transform: scale(1.05);
+        }
+        @media (max-width: 768px) {
+            .project-image, .project-image img { min-height: 220px; }
+        }
+
     </style>
 </head>
 
@@ -1672,7 +1696,7 @@
     <nav class="navbar">
 
         <div class="logo">
-            JIBIN.
+           
         </div>
 
         <ul class="nav-links">
@@ -1735,15 +1759,15 @@
                 <h1 class="hero-title">
 
                     <span>
-                        DESIGN
+                       JIBIN GILBERT
                     </span>
 
                     <span class="outline">
-                        THAT
+                       UI/UX
                     </span>
 
                     <span>
-                        MOVES.
+                        DESIGN
                     </span>
 
                 </h1>
@@ -1945,13 +1969,13 @@
                 <article class="project">
 
                     <div class="project-image">
-                        🚕
+                        <img src="t.jpg" alt="UI/UX design project 1" loading="lazy">
                     </div>
 
                     <div class="project-info">
 
                         <div class="project-title">
-                            Taxi Booking
+                             Coffee Shop Mobile App — UI/UX Design
                         </div>
 
                         <div class="project-category">
@@ -1967,7 +1991,7 @@
                 <article class="project">
 
                     <div class="project-image">
-                        💳
+                        <img src="s.jpg" alt="UI/UX design project 2" loading="lazy">
                     </div>
 
                     <div class="project-info">
@@ -1989,17 +2013,17 @@
                 <article class="project">
 
                     <div class="project-image">
-                        🎓
+                        <img src="f.jpg" alt="UI/UX design project 3" loading="lazy">
                     </div>
 
                     <div class="project-info">
 
                         <div class="project-title">
-                            AI Career Mentor
+                            Real-Time Fisherman Tracking & Fisheries
                         </div>
 
                         <div class="project-category">
-                            Product Design · AI
+                            UI/UX Design · Mobile
                         </div>
 
                     </div>
@@ -2011,17 +2035,17 @@
                 <article class="project">
 
                     <div class="project-image">
-                        👕
+                        <img src="4.png" alt="UI/UX design project 4" loading="lazy">
                     </div>
 
                     <div class="project-info">
 
                         <div class="project-title">
-                            Laundry App
+                           EduTrack, a smart School & College Bus Tracking System designed
                         </div>
 
                         <div class="project-category">
-                            UX Design · Mobile
+                            UX Design · website
                         </div>
 
                     </div>
