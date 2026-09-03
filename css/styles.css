@@ -1,0 +1,1692 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                Inter,
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #f4f1e9;
+            color: #111;
+
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =========================================================
+   CUSTOM CURSOR
+========================================================= */
+
+        .cursor {
+            position: fixed;
+
+            width: 18px;
+            height: 18px;
+
+            border: 2px solid #111;
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            z-index: 99999;
+
+            transform:
+                translate(-50%, -50%);
+
+            transition:
+                width .25s ease,
+                height .25s ease,
+                background .25s ease;
+        }
+
+        .cursor.active {
+            width: 55px;
+            height: 55px;
+
+            background:
+                rgba(17, 17, 17, .08);
+        }
+
+
+        /* =========================================================
+   NAVBAR
+========================================================= */
+
+        .navbar {
+            position: fixed;
+
+            top: 20px;
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            width:
+                calc(100% - 50px);
+
+            max-width: 1150px;
+
+            height: 66px;
+
+            padding:
+                0 28px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            background:
+                rgba(255, 255, 255, .90);
+
+            backdrop-filter:
+                blur(18px);
+
+            border:
+                1px solid rgba(0, 0, 0, .10);
+
+            border-radius: 50px;
+
+            z-index: 9000;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: 900;
+
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+
+            align-items: center;
+
+            gap: 30px;
+
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 700;
+
+            transition:
+                opacity .3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: .45;
+        }
+
+
+        /* =========================================================
+   MOVING EMOJI CONTAINER
+========================================================= */
+
+        .emoji-traveller {
+
+            position: fixed;
+
+            left: 0;
+            top: 0;
+
+            width: 110px;
+            height: 110px;
+
+            z-index: 9500;
+
+            pointer-events: none;
+
+            will-change:
+                transform;
+
+            transform:
+                translate3d(0, 0, 0);
+
+            transition:
+                filter .3s ease;
+        }
+
+
+        /* =========================================================
+   EMOJI FACE
+========================================================= */
+
+        .emoji-face {
+
+            position: absolute;
+
+            width: 96px;
+            height: 96px;
+
+            left: 7px;
+            top: 7px;
+
+            background: #ffd83d;
+
+            border:
+                4px solid #111;
+
+            border-radius: 50%;
+
+            box-shadow:
+                7px 8px 0 #111;
+
+            overflow: hidden;
+
+            will-change:
+                transform,
+                background;
+
+            transition:
+                background .35s ease,
+                transform .35s ease;
+
+            animation:
+                emojiBob 2.4s ease-in-out infinite;
+        }
+
+        @keyframes emojiBob {
+
+            0%,
+            100% {
+                margin-top: 0;
+            }
+
+            50% {
+                margin-top: -6px;
+            }
+        }
+
+
+        /* =========================================================
+   EMOJI EYES
+========================================================= */
+
+        .emoji-eye {
+
+            position: absolute;
+
+            width: 22px;
+            height: 29px;
+
+            top: 29px;
+
+            background: #111;
+
+            border-radius: 50%;
+
+            overflow: hidden;
+
+            will-change:
+                transform;
+        }
+
+        .emoji-eye.left {
+            left: 19px;
+        }
+
+        .emoji-eye.right {
+            right: 19px;
+        }
+
+
+        /* Eye shine */
+
+        .emoji-eye::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 7px;
+            height: 7px;
+
+            left: 5px;
+            top: 5px;
+
+            background: #fff;
+
+            border-radius: 50%;
+        }
+
+
+        /* =========================================================
+   EYEBROWS
+========================================================= */
+
+        .emoji-brow {
+
+            position: absolute;
+
+            width: 23px;
+            height: 4px;
+
+            top: 20px;
+
+            background: #111;
+
+            border-radius: 10px;
+
+            transition:
+                transform .35s ease,
+                opacity .3s ease;
+        }
+
+        .emoji-brow.left {
+            left: 18px;
+        }
+
+        .emoji-brow.right {
+            right: 18px;
+        }
+
+
+        /* =========================================================
+   MOUTH
+========================================================= */
+
+        .emoji-mouth {
+
+            position: absolute;
+
+            left: 50%;
+            top: 61px;
+
+            transform:
+                translateX(-50%);
+
+            width: 38px;
+            height: 18px;
+
+            border-bottom:
+                5px solid #111;
+
+            border-radius:
+                0 0 30px 30px;
+
+            transition:
+                all .35s ease;
+        }
+
+
+        /* =========================================================
+   CHEEKS
+========================================================= */
+
+        .cheek {
+
+            position: absolute;
+
+            width: 14px;
+            height: 8px;
+
+            top: 58px;
+
+            background:
+                rgba(255, 80, 80, .30);
+
+            border-radius: 50%;
+        }
+
+        .cheek.left {
+            left: 9px;
+        }
+
+        .cheek.right {
+            right: 9px;
+        }
+
+
+        /* =========================================================
+   HAPPY
+========================================================= */
+
+        .emoji-face.happy {
+            background: #ffd83d;
+        }
+
+
+        /* =========================================================
+   CURIOUS
+========================================================= */
+
+        .emoji-face.curious {
+
+            background: #ffe36b;
+
+            transform:
+                rotate(-5deg);
+        }
+
+        .emoji-face.curious .emoji-brow.left {
+
+            transform:
+                rotate(-20deg) translateY(-3px);
+        }
+
+        .emoji-face.curious .emoji-brow.right {
+
+            transform:
+                rotate(18deg) translateY(3px);
+        }
+
+        .emoji-face.curious .emoji-mouth {
+
+            width: 19px;
+            height: 19px;
+
+            border:
+                4px solid #111;
+
+            border-radius: 50%;
+        }
+
+
+        /* =========================================================
+   EXCITED
+========================================================= */
+
+        .emoji-face.excited {
+
+            background: #ffca32;
+
+            transform:
+                rotate(4deg) scale(1.05);
+        }
+
+        .emoji-face.excited .emoji-mouth {
+
+            width: 42px;
+            height: 27px;
+
+            border: 0;
+
+            background: #111;
+
+            border-radius: 50%;
+        }
+
+
+        /* =========================================================
+   COOL
+========================================================= */
+
+        .emoji-face.cool {
+            background: #ffd83d;
+        }
+
+        .emoji-face.cool .emoji-brow {
+            opacity: 0;
+        }
+
+        .emoji-face.cool .emoji-eye {
+
+            width: 30px;
+            height: 13px;
+
+            top: 35px;
+
+            border-radius: 8px;
+        }
+
+        .emoji-face.cool .emoji-eye::after {
+            display: none;
+        }
+
+
+        /* =========================================================
+   LOVE
+========================================================= */
+
+        .emoji-face.love .emoji-eye {
+
+            background: transparent;
+
+            overflow: visible;
+        }
+
+        .emoji-face.love .emoji-eye::before {
+
+            content: "♥";
+
+            position: absolute;
+
+            color: #111;
+
+            font-size: 27px;
+
+            left: 0;
+
+            top: -5px;
+        }
+
+        .emoji-face.love .emoji-eye::after {
+            display: none;
+        }
+
+        .emoji-face.love .emoji-mouth {
+
+            width: 34px;
+            height: 18px;
+        }
+
+
+        /* =========================================================
+   CELEBRATE
+========================================================= */
+
+        .emoji-face.celebrate {
+
+            background: #ffda3c;
+
+            animation:
+                celebrate .5s infinite alternate;
+        }
+
+        .emoji-face.celebrate .emoji-mouth {
+
+            width: 43px;
+            height: 27px;
+
+            background: #111;
+
+            border: 0;
+
+            border-radius: 50%;
+        }
+
+        @keyframes celebrate {
+
+            from {
+                transform:
+                    rotate(-4deg) translateY(0);
+            }
+
+            to {
+                transform:
+                    rotate(4deg) translateY(-7px);
+            }
+        }
+
+
+        /* =========================================================
+   EMOJI BLINK
+========================================================= */
+
+        .emoji-face.blink .emoji-eye {
+
+            transform:
+                scaleY(.08);
+        }
+
+
+        /* =========================================================
+   EMOJI FLOATING SHADOW
+========================================================= */
+
+        .emoji-traveller::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 60px;
+            height: 12px;
+
+            left: 25px;
+            bottom: -4px;
+
+            background:
+                rgba(0, 0, 0, .15);
+
+            border-radius: 50%;
+
+            filter: blur(5px);
+
+            animation:
+                shadowFloat 2s ease-in-out infinite;
+        }
+
+        @keyframes shadowFloat {
+
+            0%,
+            100% {
+                transform: scale(.9);
+                opacity: .25;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: .12;
+            }
+        }
+
+
+        /* =========================================================
+   HERO
+========================================================= */
+
+        .hero {
+
+            min-height: 100vh;
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            padding:
+                130px 35px 80px;
+        }
+
+        .hero-content {
+
+            width: 100%;
+
+            max-width: 1250px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                1.05fr .95fr;
+
+            align-items: center;
+
+            gap: 40px;
+        }
+
+        .hero-title {
+
+            font-size:
+                clamp(70px, 10vw, 155px);
+
+            line-height: .78;
+
+            letter-spacing: -8px;
+
+            font-weight: 950;
+        }
+
+        .hero-title span {
+            display: block;
+        }
+
+        .outline {
+
+            color: transparent;
+
+            -webkit-text-stroke:
+                2px #111;
+        }
+
+        .hero-description {
+
+            max-width: 480px;
+
+            margin-top: 45px;
+
+            font-size: 18px;
+
+            line-height: 1.65;
+        }
+
+        .hero-button {
+
+            display: inline-flex;
+
+            margin-top: 30px;
+
+            padding:
+                17px 28px;
+
+            background: #111;
+
+            color: #fff;
+
+            border-radius: 50px;
+
+            font-weight: 800;
+
+            font-size: 14px;
+
+            transition:
+                box-shadow .3s ease;
+        }
+
+        .hero-button:hover {
+
+            box-shadow:
+                7px 7px 0 #aaa;
+        }
+
+
+        /* =========================================================
+   PHOTO STAGE
+========================================================= */
+
+        .photo-stage {
+
+            height: 650px;
+
+            position: relative;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: flex-end;
+        }
+
+
+        /* =========================================================
+   PROFILE WRAPPER
+========================================================= */
+
+        .profile-wrap {
+
+            position: relative;
+
+            width: 510px;
+            height: 610px;
+
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: center;
+
+            animation:
+                profileFloat 5s ease-in-out infinite;
+        }
+
+        @keyframes profileFloat {
+
+            0%,
+            100% {
+                transform:
+                    translateY(0);
+            }
+
+            50% {
+                transform:
+                    translateY(-10px);
+            }
+        }
+
+
+        /* =========================================================
+   PROFILE IMAGES
+========================================================= */
+
+        .profile-image {
+
+            position: absolute;
+
+            bottom: 0;
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            object-position: center bottom;
+
+            will-change:
+                transform,
+                opacity;
+
+            transition:
+                opacity .7s ease,
+                transform .7s cubic-bezier(.22, .61, .36, 1);
+        }
+
+
+        /* BLUE SHIRT PHOTO */
+
+        .profile-color {
+
+            opacity: 1;
+
+            z-index: 2;
+        }
+
+
+        /* SUIT PHOTO */
+
+        .profile-suit {
+
+            opacity: 1;
+
+            z-index: 3;
+
+            filter:
+                drop-shadow(0 15px 20px rgba(0, 0, 0, .12));
+        }
+
+
+        /* =========================================================
+   SHOW SUIT
+========================================================= */
+
+        .profile-wrap.show-suit .profile-color {
+
+            opacity: 0;
+
+            transform:
+                translateX(-50%) translateY(20px) scale(.96);
+        }
+
+        .profile-wrap.show-suit .profile-suit {
+
+            opacity: 1;
+
+            transform:
+                translateX(-50%) translateY(0) scale(1);
+        }
+
+
+        /* =========================================================
+   PHOTO LABEL
+========================================================= */
+
+        .photo-label {
+
+            position: absolute;
+
+            right: -25px;
+            top: 100px;
+
+            background: #fff;
+
+            border:
+                2px solid #111;
+
+            border-radius: 20px;
+
+            padding:
+                18px 24px;
+
+            font-size: 13px;
+
+            font-weight: 900;
+
+            box-shadow:
+                7px 8px 0 #111;
+
+            z-index: 10;
+
+            transform:
+                rotate(3deg);
+        }
+
+        .photo-label::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 25px;
+            height: 2px;
+
+            background: #111;
+
+            left: -27px;
+
+            top: 50%;
+        }
+
+
+        /* =========================================================
+   SECOND LABEL
+========================================================= */
+
+        .photo-label-two {
+
+            position: absolute;
+
+            left: -30px;
+            bottom: 100px;
+
+            background: #fff;
+
+            border:
+                2px solid #111;
+
+            border-radius: 20px;
+
+            padding:
+                17px 22px;
+
+            font-size: 13px;
+
+            font-weight: 900;
+
+            box-shadow:
+                7px 8px 0 #111;
+
+            z-index: 10;
+
+            transform:
+                rotate(-4deg);
+        }
+
+
+        /* =========================================================
+   DECORATION
+========================================================= */
+
+        .circle-decoration {
+
+            position: absolute;
+
+            width: 490px;
+            height: 650px;
+
+            border:
+                2px solid #111;
+
+            border-radius: 50%;
+
+            z-index: -1;
+
+            opacity: .15;
+        }
+
+        .circle-decoration::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            border:
+                2px solid #111;
+
+            border-radius: 50%;
+
+            left: 65px;
+            top: 65px;
+        }
+
+
+        /* =========================================================
+   SECTION
+========================================================= */
+
+        .section {
+
+            position: relative;
+
+            padding:
+                140px 35px;
+        }
+
+        .container {
+
+            max-width: 1200px;
+
+            margin: auto;
+        }
+
+        .section-title {
+
+            font-size:
+                clamp(55px, 8vw, 110px);
+
+            line-height: .85;
+
+            letter-spacing: -6px;
+
+            font-weight: 950;
+
+            margin-bottom: 75px;
+        }
+
+        .section-title span {
+
+            color: transparent;
+
+            -webkit-text-stroke:
+                2px #111;
+        }
+
+
+        /* =========================================================
+   ABOUT
+========================================================= */
+
+        .about-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 80px;
+        }
+
+        .about-text {
+
+            max-width: 560px;
+
+            font-size: clamp(36px, 4vw, 60px);
+
+            line-height: 1.3;
+
+            font-weight: 700;
+
+            margin: 0;
+        }
+
+        .about-small {
+
+            max-width: 560px;
+
+            font-size: 17px;
+
+            line-height: 1.75;
+        }
+
+        html.js .about-text,
+        html.js .about-small {
+
+            opacity: 0;
+
+            transform: translateY(18px);
+
+            transition:
+                opacity .7s ease,
+                transform .7s ease;
+        }
+
+        html.js .about-small {
+
+            transition-delay: .12s;
+        }
+
+        html.js #about.visible .about-text,
+        html.js #about.visible .about-small {
+
+            opacity: 1;
+
+            transform: translateY(0);
+        }
+
+
+        /* =========================================================
+   STATS
+========================================================= */
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
+
+            margin-top: 80px;
+        }
+
+        .stat {
+
+            padding: 32px;
+
+            background: #fff;
+
+            border:
+                2px solid #111;
+
+            border-radius: 25px;
+
+            box-shadow:
+                8px 8px 0 #111;
+
+            transition:
+                transform .3s ease;
+        }
+
+        .stat:hover {
+
+            transform:
+                translateY(-8px);
+        }
+
+        .stat-number {
+
+            font-size: 55px;
+
+            font-weight: 950;
+        }
+
+        .stat-label {
+
+            margin-top: 10px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+
+        /* =========================================================
+   PROJECTS
+========================================================= */
+
+        .projects {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 30px;
+        }
+
+        .project {
+
+            min-height: 450px;
+
+            padding: 22px;
+
+            background: #fff;
+
+            border:
+                2px solid #111;
+
+            border-radius: 30px;
+
+            transition:
+                transform .6s ease,
+                box-shadow .4s ease;
+        }
+
+        .project:hover {
+
+            box-shadow:
+                10px 12px 0 #111;
+        }
+
+        .project-image {
+
+            height: 290px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 20px;
+
+            border:
+                2px solid #111;
+
+            background: #ded8cb;
+
+            font-size: 80px;
+        }
+
+        .project-info {
+
+            margin-top: 25px;
+        }
+
+        .project-title {
+
+            font-size: 29px;
+
+            font-weight: 950;
+        }
+
+        .project-category {
+
+            margin-top: 8px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+
+        /* =========================================================
+   SERVICES
+========================================================= */
+
+        .services {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .service {
+
+            min-height: 250px;
+
+            padding: 32px;
+
+            background: #fff;
+
+            border:
+                2px solid #111;
+
+            border-radius: 25px;
+
+            transition:
+                transform .35s ease,
+                box-shadow .35s ease;
+        }
+
+        .service:hover {
+
+            transform:
+                translateY(-8px);
+
+            box-shadow:
+                8px 8px 0 #111;
+        }
+
+        .service-number {
+
+            font-size: 14px;
+
+            font-weight: 900;
+        }
+
+        .service h3 {
+
+            margin-top: 75px;
+
+            font-size: 26px;
+        }
+
+
+        /* =========================================================
+   CONTACT
+========================================================= */
+
+        .contact {
+
+            min-height: 75vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+        }
+
+        .contact h2 {
+
+            font-size:
+                clamp(60px, 10vw, 145px);
+
+            line-height: .82;
+
+            letter-spacing: -8px;
+
+            font-weight: 950;
+        }
+
+        .contact h2 span {
+
+            color: transparent;
+
+            -webkit-text-stroke:
+                2px #111;
+        }
+
+        .contact-button {
+
+            display: inline-block;
+
+            margin-top: 50px;
+
+            padding:
+                20px 35px;
+
+            background: #111;
+
+            color: white;
+
+            border-radius: 50px;
+
+            font-weight: 900;
+        }
+
+
+        /* =========================================================
+   FOOTER
+========================================================= */
+
+        footer {
+
+            padding:
+                40px 35px;
+
+            border-top:
+                2px solid #111;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            font-size: 14px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+        .reveal {
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+        html.js .reveal {
+
+            opacity: 0;
+
+            transform:
+                translateY(50px);
+
+            transition:
+                opacity .8s ease,
+                transform .8s ease;
+        }
+
+        html.js .reveal.visible {
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* =========================================================
+   MOBILE
+========================================================= */
+
+        @media(max-width:900px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+
+                padding:
+                    120px 20px 70px;
+            }
+
+            .hero-content {
+
+                grid-template-columns: 1fr;
+
+                text-align: center;
+            }
+
+            .hero-description {
+
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .photo-stage {
+
+                height: 550px;
+
+                margin-top: 30px;
+            }
+
+            .profile-wrap {
+
+                width: 430px;
+
+                height: 520px;
+            }
+
+            .about-grid {
+
+                grid-template-columns: 1fr;
+
+                gap: 40px;
+            }
+
+            .projects {
+
+                grid-template-columns: 1fr;
+            }
+
+            .services {
+
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+
+                grid-template-columns: 1fr;
+            }
+
+            .emoji-traveller {
+
+                transform-origin:
+                    center center;
+            }
+        }
+
+
+        @media(max-width:600px) {
+
+            .navbar {
+
+                width:
+                    calc(100% - 24px);
+
+                top: 12px;
+
+                height: 60px;
+            }
+
+            .hero-title {
+
+                font-size: 68px;
+
+                letter-spacing: -5px;
+            }
+
+            .photo-stage {
+
+                height: 470px;
+            }
+
+            .profile-wrap {
+
+                width: 350px;
+
+                height: 440px;
+            }
+
+            .photo-label {
+
+                right: -5px;
+
+                top: 60px;
+
+                padding:
+                    12px 15px;
+
+                font-size: 10px;
+            }
+
+            .photo-label-two {
+
+                left: -5px;
+
+                bottom: 65px;
+
+                padding:
+                    12px 15px;
+
+                font-size: 10px;
+            }
+
+            .circle-decoration {
+
+                width: 300px;
+
+                height: 300px;
+            }
+
+            .section {
+
+                padding:
+                    90px 20px;
+            }
+
+            .section-title {
+
+                letter-spacing: -3px;
+            }
+
+            .contact h2 {
+
+                letter-spacing: -4px;
+            }
+
+            footer {
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            .emoji-traveller {
+
+                width: 82px;
+                height: 82px;
+            }
+
+            .emoji-face {
+
+                width: 72px;
+                height: 72px;
+
+                left: 5px;
+                top: 5px;
+
+                border-width: 3px;
+
+                box-shadow:
+                    5px 6px 0 #111;
+            }
+
+            .emoji-eye {
+
+                width: 17px;
+                height: 22px;
+
+                top: 22px;
+            }
+
+            .emoji-eye.left {
+                left: 14px;
+            }
+
+            .emoji-eye.right {
+                right: 14px;
+            }
+
+            .emoji-eye::after {
+
+                width: 5px;
+                height: 5px;
+
+                left: 4px;
+                top: 4px;
+            }
+
+            .emoji-brow {
+
+                width: 18px;
+                height: 3px;
+
+                top: 15px;
+            }
+
+            .emoji-brow.left {
+                left: 13px;
+            }
+
+            .emoji-brow.right {
+                right: 13px;
+            }
+
+            .emoji-mouth {
+
+                top: 46px;
+
+                width: 29px;
+                height: 13px;
+
+                border-bottom-width: 4px;
+            }
+
+            .cheek {
+
+                width: 10px;
+                height: 6px;
+
+                top: 44px;
+            }
+        }
+
+
+        /* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+        @media(prefers-reduced-motion:reduce) {
+
+            *,
+            *::before,
+            *::after {
+
+                animation: none !important;
+
+                transition: none !important;
+            }
+
+            .emoji-face {
+                animation: emojiBobReduced 2.4s ease-in-out infinite !important;
+            }
+
+            @keyframes emojiBobReduced {
+
+                0%,
+                100% {
+                    margin-top: 0;
+                }
+
+                50% {
+                    margin-top: -3px;
+                }
+            }
+        }
+    
+        /* Selected Work project images */
+        .project-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            background: #111;
+            min-height: 260px;
+            isolation: isolate;
+        }
+        .carousel-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            min-height: 260px;
+            transition: transform .8s ease-in-out;
+            will-change: transform;
+            backface-visibility: hidden;
+        }
+
+        html:not(.js) .carousel[data-slide-count="3"] .carousel-track {
+            animation: carouselThree 9s infinite;
+        }
+
+        html:not(.js) .carousel[data-slide-count="5"] .carousel-track {
+            animation: carouselFive 15s infinite;
+        }
+
+        html:not(.js) .carousel[data-slide-count="8"] .carousel-track {
+            animation: carouselEight 24s infinite;
+        }
+
+        @keyframes carouselThree {
+            0%, 30% { transform: translateX(0); }
+            33%, 63% { transform: translateX(-100%); }
+            66%, 96% { transform: translateX(-200%); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes carouselFive {
+            0%, 17% { transform: translateX(0); }
+            20%, 37% { transform: translateX(-100%); }
+            40%, 57% { transform: translateX(-200%); }
+            60%, 77% { transform: translateX(-300%); }
+            80%, 97% { transform: translateX(-400%); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes carouselEight {
+            0%, 10% { transform: translateX(0); }
+            12.5%, 22.5% { transform: translateX(-100%); }
+            25%, 35% { transform: translateX(-200%); }
+            37.5%, 47.5% { transform: translateX(-300%); }
+            50%, 60% { transform: translateX(-400%); }
+            62.5%, 72.5% { transform: translateX(-500%); }
+            75%, 85% { transform: translateX(-600%); }
+            87.5%, 97.5% { transform: translateX(-700%); }
+            100% { transform: translateX(0); }
+        }
+        .project-image img {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+            min-height: 260px;
+            display: block;
+            object-fit: contain;
+        }
+        @media (max-width: 768px) {
+            .project-image, .carousel-track, .project-image img { min-height: 220px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .carousel-track { transition: none; }
+        }
